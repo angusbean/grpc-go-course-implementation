@@ -6,7 +6,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/angusbean/grpc-go-course/greet/greetpb"
+	"github.com/angusbean/grpc-go-course/uniary_examples/greet/greetpb"
 	"google.golang.org/grpc"
 )
 
@@ -14,6 +14,7 @@ type server struct {
 	greetpb.UnimplementedGreetServiceServer
 }
 
+// Greet is the Uniary example for receieving a GreetRequest and returning a GreetResponse
 func (*server) Greet(ctx context.Context, req *greetpb.GreetRequest) (*greetpb.GreetResponse, error) {
 	fmt.Printf("Greet function was invoked with %v\n", req)
 	firstName := req.GetGreeting().GetFirstName()

@@ -22,26 +22,7 @@ func main() {
 
 	c := calculatorpb.NewCalculatorServiceClient(cc)
 
-	//doUnary(c)
-
 	doServerStreaming(c)
-}
-
-func doUnary(c calculatorpb.CalculatorServiceClient) {
-
-	fmt.Println("Starting Unary RPC...")
-	req := &calculatorpb.SumRequest{
-		Sum: &calculatorpb.Sum{
-			IntOne: 5,
-			IntTwo: 10,
-		},
-	}
-
-	res, err := c.Sum(context.Background(), req)
-	if err != nil {
-		log.Fatalf("error while calling Calculator RPC: %v", err)
-	}
-	log.Printf("Response from Calculator: %v", res.Result)
 }
 
 func doServerStreaming(c calculatorpb.CalculatorServiceClient) {

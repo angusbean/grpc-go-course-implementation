@@ -17,6 +17,6 @@ message GreetResponse {
 }
 
 service GreetService{
-    // Unary
+    // Unary Example
     rpc Greet(GreetRequest) returns (GreetResponse) {};
 }

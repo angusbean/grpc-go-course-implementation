@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/angusbean/grpc-go-course/greet/greetpb"
+	"github.com/angusbean/grpc-go-course/uniary_examples/greet/greetpb"
 	"google.golang.org/grpc"
 )
 
@@ -24,8 +24,8 @@ func main() {
 	doUnary(c)
 }
 
+// doUnary is a Uniary example of sending a GreetRequest in order to receive a GreetResponse from the server
 func doUnary(c greetpb.GreetServiceClient) {
-
 	fmt.Println("Starting Unary RPC...")
 	req := &greetpb.GreetRequest{
 		Greeting: &greetpb.Greeting{
