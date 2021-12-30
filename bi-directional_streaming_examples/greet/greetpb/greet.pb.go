@@ -75,16 +75,16 @@ func (x *Greeting) GetLastName() string {
 	return ""
 }
 
-type GreetRequest struct {
+type GreetEveryoneRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Greeting *Greeting `protobuf:"bytes,1,opt,name=greeting,proto3" json:"greeting,omitempty"`
+	Greeting *Greeting `protobuf:"bytes,1,opt,name=Greeting,proto3" json:"Greeting,omitempty"`
 }
 
-func (x *GreetRequest) Reset() {
-	*x = GreetRequest{}
+func (x *GreetEveryoneRequest) Reset() {
+	*x = GreetEveryoneRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_greet_greetpb_greet_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -92,13 +92,13 @@ func (x *GreetRequest) Reset() {
 	}
 }
 
-func (x *GreetRequest) String() string {
+func (x *GreetEveryoneRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GreetRequest) ProtoMessage() {}
+func (*GreetEveryoneRequest) ProtoMessage() {}
 
-func (x *GreetRequest) ProtoReflect() protoreflect.Message {
+func (x *GreetEveryoneRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_greet_greetpb_greet_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -110,19 +110,19 @@ func (x *GreetRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GreetRequest.ProtoReflect.Descriptor instead.
-func (*GreetRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GreetEveryoneRequest.ProtoReflect.Descriptor instead.
+func (*GreetEveryoneRequest) Descriptor() ([]byte, []int) {
 	return file_greet_greetpb_greet_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *GreetRequest) GetGreeting() *Greeting {
+func (x *GreetEveryoneRequest) GetGreeting() *Greeting {
 	if x != nil {
 		return x.Greeting
 	}
 	return nil
 }
 
-type GreetResponse struct {
+type GreetEveryoneResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -130,8 +130,8 @@ type GreetResponse struct {
 	Result string `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
-func (x *GreetResponse) Reset() {
-	*x = GreetResponse{}
+func (x *GreetEveryoneResponse) Reset() {
+	*x = GreetEveryoneResponse{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_greet_greetpb_greet_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -139,13 +139,13 @@ func (x *GreetResponse) Reset() {
 	}
 }
 
-func (x *GreetResponse) String() string {
+func (x *GreetEveryoneResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GreetResponse) ProtoMessage() {}
+func (*GreetEveryoneResponse) ProtoMessage() {}
 
-func (x *GreetResponse) ProtoReflect() protoreflect.Message {
+func (x *GreetEveryoneResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_greet_greetpb_greet_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -157,200 +157,12 @@ func (x *GreetResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GreetResponse.ProtoReflect.Descriptor instead.
-func (*GreetResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GreetEveryoneResponse.ProtoReflect.Descriptor instead.
+func (*GreetEveryoneResponse) Descriptor() ([]byte, []int) {
 	return file_greet_greetpb_greet_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *GreetResponse) GetResult() string {
-	if x != nil {
-		return x.Result
-	}
-	return ""
-}
-
-type GreetManyTimesRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Greeting *Greeting `protobuf:"bytes,1,opt,name=greeting,proto3" json:"greeting,omitempty"`
-}
-
-func (x *GreetManyTimesRequest) Reset() {
-	*x = GreetManyTimesRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_greet_greetpb_greet_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GreetManyTimesRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GreetManyTimesRequest) ProtoMessage() {}
-
-func (x *GreetManyTimesRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_greet_greetpb_greet_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GreetManyTimesRequest.ProtoReflect.Descriptor instead.
-func (*GreetManyTimesRequest) Descriptor() ([]byte, []int) {
-	return file_greet_greetpb_greet_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *GreetManyTimesRequest) GetGreeting() *Greeting {
-	if x != nil {
-		return x.Greeting
-	}
-	return nil
-}
-
-type GreetManyTimesResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Result string `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
-}
-
-func (x *GreetManyTimesResponse) Reset() {
-	*x = GreetManyTimesResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_greet_greetpb_greet_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *GreetManyTimesResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*GreetManyTimesResponse) ProtoMessage() {}
-
-func (x *GreetManyTimesResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_greet_greetpb_greet_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use GreetManyTimesResponse.ProtoReflect.Descriptor instead.
-func (*GreetManyTimesResponse) Descriptor() ([]byte, []int) {
-	return file_greet_greetpb_greet_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *GreetManyTimesResponse) GetResult() string {
-	if x != nil {
-		return x.Result
-	}
-	return ""
-}
-
-type LongGreetRequest struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Greeting *Greeting `protobuf:"bytes,1,opt,name=greeting,proto3" json:"greeting,omitempty"`
-}
-
-func (x *LongGreetRequest) Reset() {
-	*x = LongGreetRequest{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_greet_greetpb_greet_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *LongGreetRequest) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LongGreetRequest) ProtoMessage() {}
-
-func (x *LongGreetRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_greet_greetpb_greet_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LongGreetRequest.ProtoReflect.Descriptor instead.
-func (*LongGreetRequest) Descriptor() ([]byte, []int) {
-	return file_greet_greetpb_greet_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *LongGreetRequest) GetGreeting() *Greeting {
-	if x != nil {
-		return x.Greeting
-	}
-	return nil
-}
-
-type LongGreetResponse struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Result string `protobuf:"bytes,1,opt,name=result,proto3" json:"result,omitempty"`
-}
-
-func (x *LongGreetResponse) Reset() {
-	*x = LongGreetResponse{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_greet_greetpb_greet_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *LongGreetResponse) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*LongGreetResponse) ProtoMessage() {}
-
-func (x *LongGreetResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_greet_greetpb_greet_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use LongGreetResponse.ProtoReflect.Descriptor instead.
-func (*LongGreetResponse) Descriptor() ([]byte, []int) {
-	return file_greet_greetpb_greet_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *LongGreetResponse) GetResult() string {
+func (x *GreetEveryoneResponse) GetResult() string {
 	if x != nil {
 		return x.Result
 	}
@@ -366,43 +178,22 @@ var file_greet_greetpb_greet_proto_rawDesc = []byte{
 	0x0a, 0x0a, 0x66, 0x69, 0x72, 0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x09, 0x66, 0x69, 0x72, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a,
 	0x09, 0x6c, 0x61, 0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x6c, 0x61, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x3b, 0x0a, 0x0c, 0x47, 0x72,
-	0x65, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2b, 0x0a, 0x08, 0x67, 0x72,
-	0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x67,
-	0x72, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x08, 0x67,
-	0x72, 0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x22, 0x27, 0x0a, 0x0d, 0x47, 0x72, 0x65, 0x65, 0x74,
+	0x52, 0x08, 0x6c, 0x61, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x43, 0x0a, 0x14, 0x47, 0x72,
+	0x65, 0x65, 0x74, 0x45, 0x76, 0x65, 0x72, 0x79, 0x6f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x2b, 0x0a, 0x08, 0x47, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x72, 0x65,
+	0x65, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x08, 0x47, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x22,
+	0x2f, 0x0a, 0x15, 0x47, 0x72, 0x65, 0x65, 0x74, 0x45, 0x76, 0x65, 0x72, 0x79, 0x6f, 0x6e, 0x65,
 	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75,
 	0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74,
-	0x22, 0x44, 0x0a, 0x15, 0x47, 0x72, 0x65, 0x65, 0x74, 0x4d, 0x61, 0x6e, 0x79, 0x54, 0x69, 0x6d,
-	0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2b, 0x0a, 0x08, 0x67, 0x72, 0x65,
-	0x65, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x67, 0x72,
-	0x65, 0x65, 0x74, 0x2e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x52, 0x08, 0x67, 0x72,
-	0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x22, 0x30, 0x0a, 0x16, 0x47, 0x72, 0x65, 0x65, 0x74, 0x4d,
-	0x61, 0x6e, 0x79, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x3f, 0x0a, 0x10, 0x4c, 0x6f, 0x6e, 0x67,
-	0x47, 0x72, 0x65, 0x65, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x2b, 0x0a, 0x08,
-	0x67, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f,
-	0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x52,
-	0x08, 0x67, 0x72, 0x65, 0x65, 0x74, 0x69, 0x6e, 0x67, 0x22, 0x2b, 0x0a, 0x11, 0x4c, 0x6f, 0x6e,
-	0x67, 0x47, 0x72, 0x65, 0x65, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16,
-	0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x32, 0xdb, 0x01, 0x0a, 0x0c, 0x47, 0x72, 0x65, 0x65, 0x74,
-	0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x34, 0x0a, 0x05, 0x47, 0x72, 0x65, 0x65, 0x74,
-	0x12, 0x13, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x14, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x72,
-	0x65, 0x65, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x12, 0x51, 0x0a,
-	0x0e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x4d, 0x61, 0x6e, 0x79, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x12,
-	0x1c, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x4d, 0x61, 0x6e,
-	0x79, 0x54, 0x69, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e,
-	0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x4d, 0x61, 0x6e, 0x79, 0x54,
-	0x69, 0x6d, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x30, 0x01,
-	0x12, 0x42, 0x0a, 0x09, 0x4c, 0x6f, 0x6e, 0x67, 0x47, 0x72, 0x65, 0x65, 0x74, 0x12, 0x17, 0x2e,
-	0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x4c, 0x6f, 0x6e, 0x67, 0x47, 0x72, 0x65, 0x65, 0x74, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x4c,
-	0x6f, 0x6e, 0x67, 0x47, 0x72, 0x65, 0x65, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x00, 0x28, 0x01, 0x42, 0x0f, 0x5a, 0x0d, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2f, 0x67, 0x72,
-	0x65, 0x65, 0x74, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x32, 0x60, 0x0a, 0x0c, 0x47, 0x72, 0x65, 0x65, 0x74, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65,
+	0x12, 0x50, 0x0a, 0x0d, 0x47, 0x72, 0x65, 0x65, 0x74, 0x45, 0x76, 0x65, 0x72, 0x79, 0x6f, 0x6e,
+	0x65, 0x12, 0x1b, 0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x45,
+	0x76, 0x65, 0x72, 0x79, 0x6f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c,
+	0x2e, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2e, 0x47, 0x72, 0x65, 0x65, 0x74, 0x45, 0x76, 0x65, 0x72,
+	0x79, 0x6f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x00, 0x28, 0x01,
+	0x30, 0x01, 0x42, 0x0f, 0x5a, 0x0d, 0x67, 0x72, 0x65, 0x65, 0x74, 0x2f, 0x67, 0x72, 0x65, 0x65,
+	0x74, 0x70, 0x62, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -417,31 +208,21 @@ func file_greet_greetpb_greet_proto_rawDescGZIP() []byte {
 	return file_greet_greetpb_greet_proto_rawDescData
 }
 
-var file_greet_greetpb_greet_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_greet_greetpb_greet_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_greet_greetpb_greet_proto_goTypes = []interface{}{
-	(*Greeting)(nil),               // 0: greet.Greeting
-	(*GreetRequest)(nil),           // 1: greet.GreetRequest
-	(*GreetResponse)(nil),          // 2: greet.GreetResponse
-	(*GreetManyTimesRequest)(nil),  // 3: greet.GreetManyTimesRequest
-	(*GreetManyTimesResponse)(nil), // 4: greet.GreetManyTimesResponse
-	(*LongGreetRequest)(nil),       // 5: greet.LongGreetRequest
-	(*LongGreetResponse)(nil),      // 6: greet.LongGreetResponse
+	(*Greeting)(nil),              // 0: greet.Greeting
+	(*GreetEveryoneRequest)(nil),  // 1: greet.GreetEveryoneRequest
+	(*GreetEveryoneResponse)(nil), // 2: greet.GreetEveryoneResponse
 }
 var file_greet_greetpb_greet_proto_depIdxs = []int32{
-	0, // 0: greet.GreetRequest.greeting:type_name -> greet.Greeting
-	0, // 1: greet.GreetManyTimesRequest.greeting:type_name -> greet.Greeting
-	0, // 2: greet.LongGreetRequest.greeting:type_name -> greet.Greeting
-	1, // 3: greet.GreetService.Greet:input_type -> greet.GreetRequest
-	3, // 4: greet.GreetService.GreetManyTimes:input_type -> greet.GreetManyTimesRequest
-	5, // 5: greet.GreetService.LongGreet:input_type -> greet.LongGreetRequest
-	2, // 6: greet.GreetService.Greet:output_type -> greet.GreetResponse
-	4, // 7: greet.GreetService.GreetManyTimes:output_type -> greet.GreetManyTimesResponse
-	6, // 8: greet.GreetService.LongGreet:output_type -> greet.LongGreetResponse
-	6, // [6:9] is the sub-list for method output_type
-	3, // [3:6] is the sub-list for method input_type
-	3, // [3:3] is the sub-list for extension type_name
-	3, // [3:3] is the sub-list for extension extendee
-	0, // [0:3] is the sub-list for field type_name
+	0, // 0: greet.GreetEveryoneRequest.Greeting:type_name -> greet.Greeting
+	1, // 1: greet.GreetService.GreetEveryone:input_type -> greet.GreetEveryoneRequest
+	2, // 2: greet.GreetService.GreetEveryone:output_type -> greet.GreetEveryoneResponse
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_greet_greetpb_greet_proto_init() }
@@ -463,7 +244,7 @@ func file_greet_greetpb_greet_proto_init() {
 			}
 		}
 		file_greet_greetpb_greet_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GreetRequest); i {
+			switch v := v.(*GreetEveryoneRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -475,55 +256,7 @@ func file_greet_greetpb_greet_proto_init() {
 			}
 		}
 		file_greet_greetpb_greet_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GreetResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_greet_greetpb_greet_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GreetManyTimesRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_greet_greetpb_greet_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GreetManyTimesResponse); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_greet_greetpb_greet_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LongGreetRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_greet_greetpb_greet_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LongGreetResponse); i {
+			switch v := v.(*GreetEveryoneResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -541,7 +274,7 @@ func file_greet_greetpb_greet_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_greet_greetpb_greet_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   7,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

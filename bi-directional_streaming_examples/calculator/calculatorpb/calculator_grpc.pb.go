@@ -22,12 +22,8 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type CalculatorServiceClient interface {
-	// Unary
-	Sum(ctx context.Context, in *SumRequest, opts ...grpc.CallOption) (*SumResponse, error)
-	// Server Streaming
-	PrimeNumberDecomposition(ctx context.Context, in *PrimeNumberDecompositionRequest, opts ...grpc.CallOption) (CalculatorService_PrimeNumberDecompositionClient, error)
-	// Client Streaming
-	ComputeAverage(ctx context.Context, opts ...grpc.CallOption) (CalculatorService_ComputeAverageClient, error)
+	// Bidirectional
+	FindMaximum(ctx context.Context, opts ...grpc.CallOption) (CalculatorService_FindMaximumClient, error)
 }
 
 type calculatorServiceClient struct {
@@ -38,75 +34,31 @@ func NewCalculatorServiceClient(cc grpc.ClientConnInterface) CalculatorServiceCl
 	return &calculatorServiceClient{cc}
 }
 
-func (c *calculatorServiceClient) Sum(ctx context.Context, in *SumRequest, opts ...grpc.CallOption) (*SumResponse, error) {
-	out := new(SumResponse)
-	err := c.cc.Invoke(ctx, "/calculator.CalculatorService/Sum", in, out, opts...)
+func (c *calculatorServiceClient) FindMaximum(ctx context.Context, opts ...grpc.CallOption) (CalculatorService_FindMaximumClient, error) {
+	stream, err := c.cc.NewStream(ctx, &CalculatorService_ServiceDesc.Streams[0], "/calculator.CalculatorService/FindMaximum", opts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
-}
-
-func (c *calculatorServiceClient) PrimeNumberDecomposition(ctx context.Context, in *PrimeNumberDecompositionRequest, opts ...grpc.CallOption) (CalculatorService_PrimeNumberDecompositionClient, error) {
-	stream, err := c.cc.NewStream(ctx, &CalculatorService_ServiceDesc.Streams[0], "/calculator.CalculatorService/PrimeNumberDecomposition", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &calculatorServicePrimeNumberDecompositionClient{stream}
-	if err := x.ClientStream.SendMsg(in); err != nil {
-		return nil, err
-	}
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
+	x := &calculatorServiceFindMaximumClient{stream}
 	return x, nil
 }
 
-type CalculatorService_PrimeNumberDecompositionClient interface {
-	Recv() (*PrimeNumberDecompositionResponse, error)
+type CalculatorService_FindMaximumClient interface {
+	Send(*FindMaximumRequest) error
+	Recv() (*FindMaximumResponse, error)
 	grpc.ClientStream
 }
 
-type calculatorServicePrimeNumberDecompositionClient struct {
+type calculatorServiceFindMaximumClient struct {
 	grpc.ClientStream
 }
 
-func (x *calculatorServicePrimeNumberDecompositionClient) Recv() (*PrimeNumberDecompositionResponse, error) {
-	m := new(PrimeNumberDecompositionResponse)
-	if err := x.ClientStream.RecvMsg(m); err != nil {
-		return nil, err
-	}
-	return m, nil
-}
-
-func (c *calculatorServiceClient) ComputeAverage(ctx context.Context, opts ...grpc.CallOption) (CalculatorService_ComputeAverageClient, error) {
-	stream, err := c.cc.NewStream(ctx, &CalculatorService_ServiceDesc.Streams[1], "/calculator.CalculatorService/ComputeAverage", opts...)
-	if err != nil {
-		return nil, err
-	}
-	x := &calculatorServiceComputeAverageClient{stream}
-	return x, nil
-}
-
-type CalculatorService_ComputeAverageClient interface {
-	Send(*ComputeAverageRequest) error
-	CloseAndRecv() (*ComputeAverageResponse, error)
-	grpc.ClientStream
-}
-
-type calculatorServiceComputeAverageClient struct {
-	grpc.ClientStream
-}
-
-func (x *calculatorServiceComputeAverageClient) Send(m *ComputeAverageRequest) error {
+func (x *calculatorServiceFindMaximumClient) Send(m *FindMaximumRequest) error {
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *calculatorServiceComputeAverageClient) CloseAndRecv() (*ComputeAverageResponse, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
-	m := new(ComputeAverageResponse)
+func (x *calculatorServiceFindMaximumClient) Recv() (*FindMaximumResponse, error) {
+	m := new(FindMaximumResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -117,12 +69,8 @@ func (x *calculatorServiceComputeAverageClient) CloseAndRecv() (*ComputeAverageR
 // All implementations must embed UnimplementedCalculatorServiceServer
 // for forward compatibility
 type CalculatorServiceServer interface {
-	// Unary
-	Sum(context.Context, *SumRequest) (*SumResponse, error)
-	// Server Streaming
-	PrimeNumberDecomposition(*PrimeNumberDecompositionRequest, CalculatorService_PrimeNumberDecompositionServer) error
-	// Client Streaming
-	ComputeAverage(CalculatorService_ComputeAverageServer) error
+	// Bidirectional
+	FindMaximum(CalculatorService_FindMaximumServer) error
 	mustEmbedUnimplementedCalculatorServiceServer()
 }
 
@@ -130,14 +78,8 @@ type CalculatorServiceServer interface {
 type UnimplementedCalculatorServiceServer struct {
 }
 
-func (UnimplementedCalculatorServiceServer) Sum(context.Context, *SumRequest) (*SumResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Sum not implemented")
-}
-func (UnimplementedCalculatorServiceServer) PrimeNumberDecomposition(*PrimeNumberDecompositionRequest, CalculatorService_PrimeNumberDecompositionServer) error {
-	return status.Errorf(codes.Unimplemented, "method PrimeNumberDecomposition not implemented")
-}
-func (UnimplementedCalculatorServiceServer) ComputeAverage(CalculatorService_ComputeAverageServer) error {
-	return status.Errorf(codes.Unimplemented, "method ComputeAverage not implemented")
+func (UnimplementedCalculatorServiceServer) FindMaximum(CalculatorService_FindMaximumServer) error {
+	return status.Errorf(codes.Unimplemented, "method FindMaximum not implemented")
 }
 func (UnimplementedCalculatorServiceServer) mustEmbedUnimplementedCalculatorServiceServer() {}
 
@@ -152,65 +94,26 @@ func RegisterCalculatorServiceServer(s grpc.ServiceRegistrar, srv CalculatorServ
 	s.RegisterService(&CalculatorService_ServiceDesc, srv)
 }
 
-func _CalculatorService_Sum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(SumRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CalculatorServiceServer).Sum(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/calculator.CalculatorService/Sum",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CalculatorServiceServer).Sum(ctx, req.(*SumRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+func _CalculatorService_FindMaximum_Handler(srv interface{}, stream grpc.ServerStream) error {
+	return srv.(CalculatorServiceServer).FindMaximum(&calculatorServiceFindMaximumServer{stream})
 }
 
-func _CalculatorService_PrimeNumberDecomposition_Handler(srv interface{}, stream grpc.ServerStream) error {
-	m := new(PrimeNumberDecompositionRequest)
-	if err := stream.RecvMsg(m); err != nil {
-		return err
-	}
-	return srv.(CalculatorServiceServer).PrimeNumberDecomposition(m, &calculatorServicePrimeNumberDecompositionServer{stream})
-}
-
-type CalculatorService_PrimeNumberDecompositionServer interface {
-	Send(*PrimeNumberDecompositionResponse) error
+type CalculatorService_FindMaximumServer interface {
+	Send(*FindMaximumResponse) error
+	Recv() (*FindMaximumRequest, error)
 	grpc.ServerStream
 }
 
-type calculatorServicePrimeNumberDecompositionServer struct {
+type calculatorServiceFindMaximumServer struct {
 	grpc.ServerStream
 }
 
-func (x *calculatorServicePrimeNumberDecompositionServer) Send(m *PrimeNumberDecompositionResponse) error {
+func (x *calculatorServiceFindMaximumServer) Send(m *FindMaximumResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-func _CalculatorService_ComputeAverage_Handler(srv interface{}, stream grpc.ServerStream) error {
-	return srv.(CalculatorServiceServer).ComputeAverage(&calculatorServiceComputeAverageServer{stream})
-}
-
-type CalculatorService_ComputeAverageServer interface {
-	SendAndClose(*ComputeAverageResponse) error
-	Recv() (*ComputeAverageRequest, error)
-	grpc.ServerStream
-}
-
-type calculatorServiceComputeAverageServer struct {
-	grpc.ServerStream
-}
-
-func (x *calculatorServiceComputeAverageServer) SendAndClose(m *ComputeAverageResponse) error {
-	return x.ServerStream.SendMsg(m)
-}
-
-func (x *calculatorServiceComputeAverageServer) Recv() (*ComputeAverageRequest, error) {
-	m := new(ComputeAverageRequest)
+func (x *calculatorServiceFindMaximumServer) Recv() (*FindMaximumRequest, error) {
+	m := new(FindMaximumRequest)
 	if err := x.ServerStream.RecvMsg(m); err != nil {
 		return nil, err
 	}
@@ -223,21 +126,12 @@ func (x *calculatorServiceComputeAverageServer) Recv() (*ComputeAverageRequest, 
 var CalculatorService_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "calculator.CalculatorService",
 	HandlerType: (*CalculatorServiceServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "Sum",
-			Handler:    _CalculatorService_Sum_Handler,
-		},
-	},
+	Methods:     []grpc.MethodDesc{},
 	Streams: []grpc.StreamDesc{
 		{
-			StreamName:    "PrimeNumberDecomposition",
-			Handler:       _CalculatorService_PrimeNumberDecomposition_Handler,
+			StreamName:    "FindMaximum",
+			Handler:       _CalculatorService_FindMaximum_Handler,
 			ServerStreams: true,
-		},
-		{
-			StreamName:    "ComputeAverage",
-			Handler:       _CalculatorService_ComputeAverage_Handler,
 			ClientStreams: true,
 		},
 	},
