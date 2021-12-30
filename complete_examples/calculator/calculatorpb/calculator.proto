@@ -44,17 +44,32 @@ message FindMaximumResponse{
     int32 result = 1;
 }
 
+message SquareRootRequest{
+    int32 number = 1;
+}
+
+message SquareRootResponse{
+    double number_root = 1;
+}
+
 // Calculator Services (all transfer types)
 service CalculatorService{
-    // Unary
+    // Basic gRPC Service Examples
+    // Unary Example
     rpc Sum(SumRequest) returns (SumResponse) {};
 
-    // Server Streaming
+    // Server Streaming Example
     rpc PrimeNumberDecomposition(PrimeNumberDecompositionRequest) returns (stream PrimeNumberDecompositionResponse) {};
 
-    // Client Streaming
+    // Client Streaming Example
     rpc ComputeAverage(stream ComputeAverageRequest) returns (ComputeAverageResponse) {};
 
-    // Bidirectional
+    // Bidirectional Example
     rpc FindMaximum(stream FindMaximumRequest) returns (stream FindMaximumResponse) {};
+
+    // Advanced gRPC Service Examples
+    // Unary Example
+    // Error Handling - INVALID_ARGUEMENT - this RPC will throw an exception if the number sent is negative
+    rpc SquareRoot(SquareRootRequest) returns (SquareRootResponse) {};
+
 }
