@@ -27,4 +27,5 @@ https://avi.im/grpc-errors/
 gRPC Deadlines documentation
 https://grpc.io/blog/deadlines/
 
-
+gRPC Authentication documentation
+https://grpc.io/docs/guides/auth/
