@@ -3,43 +3,63 @@ syntax = "proto3";
 package greet;
 option go_package="greet/greetpb";
 
+// Generic Greet type message
 message Greeting {
     string first_name = 1;
     string last_name = 2;
 }
 
+// GreetRequest used in Unary gRPC call
 message GreetRequest {
     Greeting greeting = 1;
 }
 
+// GreetResponse used in Unary gRPC call
 message GreetResponse {
     string result = 1;
 }
 
+// GreetManyTimesRequest used in Server Streaming gRPC call
 message GreetManyTimesRequest {
     Greeting greeting = 1;
 }
 
+// GreetManyTimesResponse used in Server Streaming gRPC call
 message GreetManyTimesResponse {
     string result = 1;
 }
 
+// LongGreetRequest used in Client Streaming gRPC call
 message LongGreetRequest {
     Greeting greeting = 1;
 }
 
+// LongGreetResponse used in Client Streaming gRPC call
 message LongGreetResponse {
     string result = 1;
 }
 
+// GreetEveryoneRequest used in Bi-directional Streaming gRPC call
 message GreetEveryoneRequest {
     Greeting Greeting = 1;
 }
 
+// GreetEveryoneResponse used in Bi-directional Streaming gRPC call
 message GreetEveryoneResponse {
     string result = 1;
 }
 
+// GreetWithDeadlineRequest used in Unary gRPC call with Deadline set
+message GreetWithDeadlineRequest {
+    Greeting greeting = 1;
+}
+
+// GreetWithDeadlineReponse used in Unary gRPC response with Deadline set
+message GreetWithDeadlineReponse {
+    string result = 1;
+}
+
+// GreetService contains all services implemented in Greet API
 service GreetService{
     // Unary Response Example
     rpc Greet(GreetRequest) returns (GreetResponse) {};
@@ -52,5 +72,9 @@ service GreetService{
 
     // Bi-directional Streaming Example
     rpc GreetEveryone(stream GreetEveryoneRequest) returns (stream GreetEveryoneResponse) {};
+
+    // Advanced gRPC Service Examples
+    // Unary with Deadline Example
+    rpc GreetWithDeadline(GreetWithDeadlineRequest) returns (GreetWithDeadlineReponse) {};
 }
 

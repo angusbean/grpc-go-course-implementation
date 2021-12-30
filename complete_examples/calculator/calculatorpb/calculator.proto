@@ -17,37 +17,42 @@ message SumResponse {
     int32 result = 1;
 }
 
-// Server Streaming Messages
+// PrimeNumberDecompositionRequest used in Server Streaming gRPC call
 message PrimeNumberDecompositionRequest{
     int64 number = 1;
 }
 
+// PrimeNumberDecompositionResponse used in Server Streaming gRPC response
 message PrimeNumberDecompositionResponse{
     int64 prime_factor = 1;
 }
 
-// Client Streaming Messages
+// ComputeAverageRequest use in Client Streaming gRPC call
 message ComputeAverageRequest{
     int32 number = 1;
 }
 
+// ComputeAverageResponse used in Client Streaming gRPC response
 message ComputeAverageResponse{
     double result = 1;
 }
 
-// Bi-directional Streaming Messages
+// FindMaximumRequest used in Bi-directional Streaming gRPC call
 message FindMaximumRequest{
     int32 number = 1;
 }
 
+// FindMaximumResponse used in Bi-directional Streaming gRPC response
 message FindMaximumResponse{
     int32 result = 1;
 }
 
+// SquareRootRequest used in Unary example with Error Handling gRPC call
 message SquareRootRequest{
     int32 number = 1;
 }
 
+// SquareRootResponse used in Unary example with Error Handling gRPC response
 message SquareRootResponse{
     double number_root = 1;
 }
