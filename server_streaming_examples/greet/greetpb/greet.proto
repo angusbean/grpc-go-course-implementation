@@ -17,7 +17,7 @@ message GreetManyTimesResponse {
 }
 
 service GreetService{
-    // Server Streaming
+    // Server Streaming Exmample
     rpc GreetManyTimes(GreetManyTimesRequest) returns (stream GreetManyTimesResponse) {};
 }
 

@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/angusbean/grpc-go-course/client_streamling_examples/greet/greetpb"
+	"github.com/angusbean/grpc-go-course/bi-directional_streaming_examples/greet/greetpb"
 	"google.golang.org/grpc"
 )
 

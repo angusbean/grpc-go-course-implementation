@@ -22,11 +22,11 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type GreetServiceClient interface {
-	// Unary
+	// Unary Response Example
 	Greet(ctx context.Context, in *GreetRequest, opts ...grpc.CallOption) (*GreetResponse, error)
-	// Server Streaming
+	// Server Streaming Example
 	GreetManyTimes(ctx context.Context, in *GreetManyTimesRequest, opts ...grpc.CallOption) (GreetService_GreetManyTimesClient, error)
-	// Client Streaming
+	// Client Streaming Example
 	LongGreet(ctx context.Context, opts ...grpc.CallOption) (GreetService_LongGreetClient, error)
 }
 
@@ -117,11 +117,11 @@ func (x *greetServiceLongGreetClient) CloseAndRecv() (*LongGreetResponse, error)
 // All implementations must embed UnimplementedGreetServiceServer
 // for forward compatibility
 type GreetServiceServer interface {
-	// Unary
+	// Unary Response Example
 	Greet(context.Context, *GreetRequest) (*GreetResponse, error)
-	// Server Streaming
+	// Server Streaming Example
 	GreetManyTimes(*GreetManyTimesRequest, GreetService_GreetManyTimesServer) error
-	// Client Streaming
+	// Client Streaming Example
 	LongGreet(GreetService_LongGreetServer) error
 	mustEmbedUnimplementedGreetServiceServer()
 }

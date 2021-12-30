@@ -26,10 +26,7 @@ message PrimeNumberDecompositionResponse{
 }
 
 service CalculatorService{
-    // Unary
-    rpc Sum(SumRequest) returns (SumResponse) {};
-
-    // Streaming
+    // Server Streaming Example
     rpc PrimeNumberDecomposition(PrimeNumberDecompositionRequest)
     returns (stream PrimeNumberDecompositionResponse) {};
 }

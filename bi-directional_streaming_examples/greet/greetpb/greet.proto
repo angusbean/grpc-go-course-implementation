@@ -33,13 +33,13 @@ message LongGreetResponse {
 }
 
 service GreetService{
-    // Unary
+    // Unary Response Example
     rpc Greet(GreetRequest) returns (GreetResponse) {};
 
-    // Server Streaming
+    // Server Streaming Example
     rpc GreetManyTimes(GreetManyTimesRequest) returns (stream GreetManyTimesResponse) {};
 
-    // Client Streaming
+    // Client Streaming Example
     rpc LongGreet(stream LongGreetRequest) returns (LongGreetResponse) {};
 }
 
