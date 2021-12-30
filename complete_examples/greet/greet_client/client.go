@@ -10,11 +10,15 @@ import (
 	"github.com/angusbean/grpc-go-course/complete_examples/greet/greetpb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/status"
 )
 
 func main() {
-	fmt.Printf("Client running\n")
+	fmt.Println("Client is running...")
+
+	certFile := "../ssl/ca.crt" //Cert Auth Trust Certification
+	creds := credentials.NewClientTLSFromFile(certFile, "")
 
 	cc, err := grpc.Dial("localhost:50052", grpc.WithInsecure())
 
@@ -25,7 +29,7 @@ func main() {
 
 	c := greetpb.NewGreetServiceClient(cc)
 
-	//doUnary(c)
+	doUnary(c)
 
 	//doServerStreaming(c)
 
@@ -33,9 +37,9 @@ func main() {
 
 	//doBiDirectionalStreaming(c)
 
-	doUnaryWithDeadline(c, 1*time.Second)
+	//doUnaryWithDeadline(c, 1*time.Second)
 
-	doUnaryWithDeadline(c, 10*time.Second)
+	//doUnaryWithDeadline(c, 10*time.Second)
 
 }
 
@@ -202,7 +206,7 @@ func doBiDirectionalStreaming(c greetpb.GreetServiceClient) {
 
 func doUnaryWithDeadline(c greetpb.GreetServiceClient, timeout time.Duration) {
 
-	fmt.Println("Starting UnaryWithDeadline RPC...\n")
+	fmt.Println("Starting UnaryWithDeadline RPC...")
 	req := &greetpb.GreetWithDeadlineRequest{
 		Greeting: &greetpb.Greeting{
 			FirstName: "Angus",
