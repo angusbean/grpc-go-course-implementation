@@ -29,3 +29,6 @@ https://grpc.io/blog/deadlines/
 
 gRPC Authentication documentation
 https://grpc.io/docs/guides/auth/
+
+gRPC Reflection (asking server for endpoints available)
+https://github.com/grpc/grpc/blob/master/doc/server-reflection.md
