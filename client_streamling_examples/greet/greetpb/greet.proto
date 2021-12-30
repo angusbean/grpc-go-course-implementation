@@ -17,7 +17,7 @@ message LongGreetResponse {
 }
 
 service GreetService{
-    // Client Streaming
+    // Client Streaming Example
     rpc LongGreet(stream LongGreetRequest) returns (LongGreetResponse) {};
 }
 

@@ -15,6 +15,6 @@ message ComputeAverageResponse{
 
 // Calculator Service
 service CalculatorService{
-    // Client Streaming
+    // Client Streaming Example
     rpc ComputeAverage(stream ComputeAverageRequest) returns (ComputeAverageResponse) {};
 }

@@ -17,6 +17,6 @@ message SumResponse {
 }
 
 service CalculatorService{
-    // Unary
+    // Unary Example
     rpc Sum(SumRequest) returns (SumResponse) {};
 }
