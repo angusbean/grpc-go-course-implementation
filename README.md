@@ -30,5 +30,15 @@ https://grpc.io/blog/deadlines/
 gRPC Authentication documentation
 https://grpc.io/docs/guides/auth/
 
-gRPC Reflection (asking server for endpoints available)
+gRPC Reflection (asking server for endpoints available and calling via cli)
 https://github.com/grpc/grpc/blob/master/doc/server-reflection.md
+
+Evans Cli (install this cli to inspect reflections)
+https://github.com/ktr0731/evans
+Command examples:
+    - show package
+    - show service (shows the gRPC services available on that running server)
+    - show message
+    - desc *service-name*
+    - call *service-name* (calls the gRPC service via cli)
+
